@@ -1,0 +1,39 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    transition: margin-left var(--transition-base);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content.expanded {
+    margin-left: 80px;
+}
+
+.page-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+    max-width: 1600px;
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content.expanded {
+        margin-left: 0;
+    }
+
+    .page-content {
+        padding: var(--spacing-md);
+    }
+}
