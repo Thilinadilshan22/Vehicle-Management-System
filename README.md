@@ -192,18 +192,6 @@ The optimized files will be in the `dist/` folder, ready for deployment to:
 - Vercel
 - Any static hosting service
 
-## 📝 License
-
-This project is part of a capstone project for Sabaragamuwa University of Sri Lanka.
-
-## 👥 Group 13 Contributors
-
-- Frontend Engineer: M.G.W.M.R.S. Wanasinghe
-- QA Engineer: P.A.T.D. Dassanayake
-- Backend Engineer: W.M.W.G.W.A. Warnakulasuriya
-- Business Analyst: R.M.N.D. Rathnayake
-- Database Administrator: J.M.I.G. Jayasooriya
-
 ## 📞 Support
 
 For issues and questions, please contact the development team.
