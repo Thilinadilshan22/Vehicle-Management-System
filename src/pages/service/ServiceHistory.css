@@ -1,0 +1,236 @@
+.service-history-page {
+    animation: fadeIn 0.5s ease;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.page-header h1 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-header p {
+    color: var(--gray-400);
+    margin: 0;
+}
+
+/* Statistics Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.stat-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    border-color: var(--primary-600);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-info .stat-label {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+}
+
+.stat-info .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-100);
+}
+
+/* Filters Bar */
+.filters-bar {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-box {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0.75rem 1rem;
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+}
+
+.search-box svg {
+    color: var(--gray-400);
+    font-size: 1.125rem;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--gray-100);
+    font-size: 0.938rem;
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: var(--gray-500);
+}
+
+/* Service Cards Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.service-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    transition: all var(--transition-base);
+}
+
+.service-card:hover {
+    border-color: var(--primary-600);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.service-header h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem 0;
+    color: var(--primary-400);
+}
+
+.vehicle-info {
+    color: var(--gray-400);
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.service-detail {
+    margin-bottom: var(--spacing-md);
+}
+
+.description {
+    color: var(--gray-300);
+    font-size: 0.938rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.service-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-100);
+}
+
+.service-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--dark-border);
+}
+
+.technician {
+    font-size: 0.875rem;
+    color: var(--gray-300);
+}
+
+.next-service {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-bar {
+        flex-direction: column;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-stats {
+        grid-template-columns: 1fr;
+    }
+}
