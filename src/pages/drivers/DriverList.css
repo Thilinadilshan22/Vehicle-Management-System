@@ -1,0 +1,221 @@
+.driver-list-page {
+    animation: fadeIn 0.5s ease;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.page-header h1 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-header p {
+    color: var(--gray-400);
+    margin: 0;
+}
+
+.filters-bar {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-box {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0.75rem 1rem;
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+}
+
+.search-box:focus-within {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-box svg {
+    color: var(--gray-400);
+    font-size: 1.125rem;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--gray-100);
+    font-size: 0.938rem;
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: var(--gray-500);
+}
+
+.drivers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.driver-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.driver-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.driver-card:hover::before {
+    transform: scaleX(1);
+}
+
+.driver-card:hover {
+    border-color: var(--primary-600);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.driver-header {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.driver-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.driver-info {
+    flex: 1;
+}
+
+.driver-info h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem 0;
+    color: var(--gray-50);
+}
+
+.driver-license {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    margin: 0 0 0.25rem 0;
+}
+
+.driver-contact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-500);
+    font-size: 0.813rem;
+}
+
+.driver-contact svg {
+    font-size: 0.875rem;
+}
+
+.driver-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-100);
+}
+
+.driver-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--dark-border);
+}
+
+.assigned-vehicle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--gray-300);
+}
+
+.assigned-vehicle svg {
+    color: var(--primary-400);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .filters-bar {
+        flex-direction: column;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .drivers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .driver-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
