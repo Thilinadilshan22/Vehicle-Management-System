@@ -18,6 +18,53 @@
     margin: 0;
 }
 
+.header-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+/* Fuel Type Filter */
+.fuel-type-filter {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--dark-surface);
+    padding: 0.25rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--dark-border);
+}
+
+.fuel-type-filter button {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--gray-400);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.fuel-type-filter button:hover {
+    color: var(--gray-200);
+    background: var(--dark-bg);
+}
+
+.fuel-type-filter button.active {
+    background: var(--primary-600);
+    color: white;
+}
+
+.fuel-type-filter button.petrol.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.fuel-type-filter button.diesel.active {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
 /* Statistics Cards */
 .stats-grid {
     display: grid;
@@ -69,6 +116,12 @@
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--gray-100);
+}
+
+.stat-info .stat-breakdown {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-top: 0.25rem;
 }
 
 /* Chart Section */
@@ -284,6 +337,22 @@
     box-shadow: var(--shadow-xl);
 }
 
+.fuel-card.petrol-card {
+    border-left: 3px solid #667eea;
+}
+
+.fuel-card.diesel-card {
+    border-left: 3px solid #fa709a;
+}
+
+.fuel-card.petrol-card:hover {
+    border-color: #667eea;
+}
+
+.fuel-card.diesel-card:hover {
+    border-color: #fa709a;
+}
+
 .fuel-header {
     display: flex;
     justify-content: space-between;
@@ -406,11 +475,43 @@
     color: var(--gray-300);
 }
 
+/* No Records State */
+.no-records {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-2xl);
+    background: var(--dark-surface);
+    border: 1px dashed var(--dark-border);
+    border-radius: var(--radius-xl);
+}
+
+.no-records p {
+    color: var(--gray-400);
+    margin: 0;
+    font-size: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .page-header {
         flex-direction: column;
         gap: var(--spacing-md);
+    }
+
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .fuel-type-filter {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .fuel-type-filter button {
+        flex: 1;
+        padding: 0.5rem 0.5rem;
+        font-size: 0.813rem;
     }
 
     .stats-grid {

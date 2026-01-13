@@ -5,6 +5,7 @@ import './FuelAnalysis.css';
 
 const FuelAnalysis = () => {
     const [selectedPeriod, setSelectedPeriod] = useState('month');
+    const [selectedFuelType, setSelectedFuelType] = useState('all'); // all, petrol, diesel
 
     // Mock fuel data
     const fuelRecords = [
@@ -75,11 +76,44 @@ const FuelAnalysis = () => {
         },
     ];
 
-    // Calculate statistics
-    const totalLiters = fuelRecords.reduce((sum, record) => sum + record.liters, 0);
-    const totalCost = fuelRecords.reduce((sum, record) => sum + record.cost, 0);
-    const avgEfficiency = (fuelRecords.reduce((sum, record) => sum + record.efficiency, 0) / fuelRecords.length).toFixed(1);
-    const avgCostPerLiter = (totalCost / totalLiters).toFixed(2);
+    // Filter records based on selected fuel type
+    const filteredRecords = selectedFuelType === 'all'
+        ? fuelRecords
+        : fuelRecords.filter(record => {
+            if (selectedFuelType === 'petrol') return record.fuelType.includes('Petrol');
+            if (selectedFuelType === 'diesel') return record.fuelType.includes('Diesel');
+            return true;
+        });
+
+    // Calculate statistics for filtered records
+    const totalLiters = filteredRecords.reduce((sum, record) => sum + record.liters, 0);
+    const totalCost = filteredRecords.reduce((sum, record) => sum + record.cost, 0);
+    const avgEfficiency = filteredRecords.length > 0
+        ? (filteredRecords.reduce((sum, record) => sum + record.efficiency, 0) / filteredRecords.length).toFixed(1)
+        : '0.0';
+    const avgCostPerLiter = totalLiters > 0 ? (totalCost / totalLiters).toFixed(2) : '0.00';
+
+    // Separate statistics for petrol and diesel
+    const petrolRecords = fuelRecords.filter(r => r.fuelType.includes('Petrol'));
+    const dieselRecords = fuelRecords.filter(r => r.fuelType.includes('Diesel'));
+
+    const petrolStats = {
+        count: petrolRecords.length,
+        liters: petrolRecords.reduce((sum, r) => sum + r.liters, 0).toFixed(1),
+        cost: petrolRecords.reduce((sum, r) => sum + r.cost, 0),
+        avgEfficiency: petrolRecords.length > 0
+            ? (petrolRecords.reduce((sum, r) => sum + r.efficiency, 0) / petrolRecords.length).toFixed(1)
+            : '0.0'
+    };
+
+    const dieselStats = {
+        count: dieselRecords.length,
+        liters: dieselRecords.reduce((sum, r) => sum + r.liters, 0).toFixed(1),
+        cost: dieselRecords.reduce((sum, r) => sum + r.cost, 0),
+        avgEfficiency: dieselRecords.length > 0
+            ? (dieselRecords.reduce((sum, r) => sum + r.efficiency, 0) / dieselRecords.length).toFixed(1)
+            : '0.0'
+    };
 
     // Mock chart data for visualization
     const chartData = [
@@ -101,9 +135,31 @@ const FuelAnalysis = () => {
                     <h1>Fuel Analysis</h1>
                     <p>Monitor fuel consumption and efficiency trends</p>
                 </div>
-                <Link to="/fuel/add" className="btn btn-primary">
-                    <FiPlus /> Add Fuel Record
-                </Link>
+                <div className="header-actions">
+                    <div className="fuel-type-filter">
+                        <button
+                            className={selectedFuelType === 'all' ? 'active' : ''}
+                            onClick={() => setSelectedFuelType('all')}
+                        >
+                            All Vehicles
+                        </button>
+                        <button
+                            className={selectedFuelType === 'petrol' ? 'active petrol' : 'petrol'}
+                            onClick={() => setSelectedFuelType('petrol')}
+                        >
+                            ⛽ Petrol ({petrolStats.count})
+                        </button>
+                        <button
+                            className={selectedFuelType === 'diesel' ? 'active diesel' : 'diesel'}
+                            onClick={() => setSelectedFuelType('diesel')}
+                        >
+                            🚛 Diesel ({dieselStats.count})
+                        </button>
+                    </div>
+                    <Link to="/fuel/add" className="btn btn-primary">
+                        <FiPlus /> Add Fuel Record
+                    </Link>
+                </div>
             </div>
 
             {/* Statistics Cards */}
@@ -113,8 +169,14 @@ const FuelAnalysis = () => {
                         <FiDroplet />
                     </div>
                     <div className="stat-info">
-                        <span className="stat-label">Total Fuel</span>
+                        <span className="stat-label">
+                            {selectedFuelType === 'all' ? 'Total Fuel' :
+                                selectedFuelType === 'petrol' ? 'Petrol Consumed' : 'Diesel Consumed'}
+                        </span>
                         <span className="stat-value">{totalLiters.toFixed(1)} L</span>
+                        {selectedFuelType === 'all' && (
+                            <span className="stat-breakdown">⛽ {petrolStats.liters}L | 🚛 {dieselStats.liters}L</span>
+                        )}
                     </div>
                 </div>
                 <div className="stat-card">
@@ -122,8 +184,14 @@ const FuelAnalysis = () => {
                         <FiDollarSign />
                     </div>
                     <div className="stat-info">
-                        <span className="stat-label">Total Cost</span>
+                        <span className="stat-label">
+                            {selectedFuelType === 'all' ? 'Total Cost' :
+                                selectedFuelType === 'petrol' ? 'Petrol Cost' : 'Diesel Cost'}
+                        </span>
                         <span className="stat-value">Rs. {totalCost.toLocaleString()}</span>
+                        {selectedFuelType === 'all' && (
+                            <span className="stat-breakdown">⛽ Rs.{petrolStats.cost.toLocaleString()} | 🚛 Rs.{dieselStats.cost.toLocaleString()}</span>
+                        )}
                     </div>
                 </div>
                 <div className="stat-card">
@@ -133,6 +201,9 @@ const FuelAnalysis = () => {
                     <div className="stat-info">
                         <span className="stat-label">Avg Efficiency</span>
                         <span className="stat-value">{avgEfficiency} km/L</span>
+                        {selectedFuelType === 'all' && (
+                            <span className="stat-breakdown">⛽ {petrolStats.avgEfficiency} | 🚛 {dieselStats.avgEfficiency} km/L</span>
+                        )}
                     </div>
                 </div>
                 <div className="stat-card">
@@ -142,6 +213,9 @@ const FuelAnalysis = () => {
                     <div className="stat-info">
                         <span className="stat-label">Avg Price/L</span>
                         <span className="stat-value">Rs. {avgCostPerLiter}</span>
+                        {selectedFuelType === 'all' && (
+                            <span className="stat-breakdown">{filteredRecords.length} Records</span>
+                        )}
                     </div>
                 </div>
             </div>
@@ -227,8 +301,8 @@ const FuelAnalysis = () => {
 
             {/* Fuel Records Grid */}
             <div className="fuel-records-grid">
-                {fuelRecords.map((record) => (
-                    <div key={record.id} className="fuel-card">
+                {filteredRecords.length > 0 ? filteredRecords.map((record) => (
+                    <div key={record.id} className={`fuel-card ${record.fuelType.includes('Petrol') ? 'petrol-card' : 'diesel-card'}`}>
                         <div className="fuel-header">
                             <div>
                                 <h3>{record.vehicleName}</h3>
@@ -270,7 +344,11 @@ const FuelAnalysis = () => {
                             <span className="station">⛽ {record.station}</span>
                         </div>
                     </div>
-                ))}
+                )) : (
+                    <div className="no-records">
+                        <p>No fuel records found for {selectedFuelType === 'petrol' ? 'Petrol' : 'Diesel'} vehicles.</p>
+                    </div>
+                )}
             </div>
         </div>
     );
