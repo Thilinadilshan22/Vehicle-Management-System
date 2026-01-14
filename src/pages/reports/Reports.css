@@ -1,0 +1,642 @@
+/* ==========================================
+   Reports Page Styles
+   ========================================== */
+
+.reports-page {
+    padding: var(--spacing-xl);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ========================================== 
+   Page Header
+   ========================================== */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-2xl);
+    gap: var(--spacing-lg);
+}
+
+.page-header h1 {
+    margin-bottom: var(--spacing-xs);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-header p {
+    color: var(--gray-400);
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.date-range-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--dark-surface);
+    padding: 0.625rem 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--dark-border);
+}
+
+.date-range-selector svg {
+    color: var(--primary-400);
+    font-size: 1.125rem;
+}
+
+.date-range-selector select {
+    background: transparent;
+    border: none;
+    color: var(--gray-100);
+    padding: 0;
+    cursor: pointer;
+    min-width: 140px;
+}
+
+.date-range-selector select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ========================================== 
+   Summary Statistics
+   ========================================== */
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    background: var(--dark-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--dark-border);
+    transition: all var(--transition-base);
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-600);
+    box-shadow: var(--shadow-xl);
+}
+
+.summary-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.summary-label {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+.summary-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--gray-50);
+    font-family: var(--font-display);
+}
+
+.summary-change {
+    font-size: 0.813rem;
+    font-weight: 500;
+}
+
+.summary-change.up {
+    color: var(--accent-green);
+}
+
+.summary-change.neutral {
+    color: var(--gray-400);
+}
+
+.summary-change.down {
+    color: var(--accent-red);
+}
+
+/* ========================================== 
+   Report Types Section
+   ========================================== */
+
+.report-types-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.report-types-section h2 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--gray-100);
+}
+
+.report-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.report-type-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    background: var(--dark-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--dark-border);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.report-type-card:hover {
+    border-color: var(--primary-500);
+    transform: translateY(-2px);
+}
+
+.report-type-card.active {
+    border-color: var(--primary-500);
+    background: rgba(59, 130, 246, 0.05);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.report-type-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.report-type-info h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--gray-50);
+}
+
+.report-type-info p {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    margin: 0;
+}
+
+/* ========================================== 
+   Charts Section
+   ========================================== */
+
+.reports-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.charts-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.chart-card {
+    background: var(--dark-surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--dark-border);
+    padding: var(--spacing-xl);
+    transition: all var(--transition-base);
+}
+
+.chart-card:hover {
+    border-color: var(--primary-600);
+    box-shadow: var(--shadow-lg);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.chart-header h3 {
+    font-size: 1.25rem;
+    color: var(--gray-50);
+}
+
+.chart-header svg {
+    font-size: 1.5rem;
+    color: var(--primary-400);
+}
+
+/* Pie Chart */
+.pie-chart-container {
+    display: flex;
+    gap: var(--spacing-2xl);
+    align-items: center;
+}
+
+.pie-chart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pie-slice {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.pie-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--dark-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--dark-surface);
+}
+
+.pie-total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-50);
+    font-family: var(--font-display);
+}
+
+.pie-label {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.chart-legend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.legend-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.legend-name {
+    font-size: 0.875rem;
+    color: var(--gray-300);
+    flex: 1;
+}
+
+.legend-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-100);
+}
+
+/* Top Vehicles List */
+.top-vehicles-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.vehicle-performance-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--dark-border);
+    transition: all var(--transition-base);
+}
+
+.vehicle-performance-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--primary-600);
+    transform: translateX(4px);
+}
+
+.vehicle-rank {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.vehicle-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    min-width: 120px;
+}
+
+.vehicle-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-50);
+}
+
+.vehicle-model {
+    font-size: 0.813rem;
+    color: var(--gray-400);
+}
+
+.vehicle-metrics {
+    display: flex;
+    gap: var(--spacing-xl);
+    margin-left: auto;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.metric-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-300);
+}
+
+/* ========================================== 
+   Recent Activities
+   ========================================== */
+
+.activities-section {
+    background: var(--dark-surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--dark-border);
+    padding: var(--spacing-xl);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-header h3 {
+    font-size: 1.25rem;
+    color: var(--gray-50);
+}
+
+.activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--dark-border);
+    transition: all var(--transition-base);
+}
+
+.activity-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--primary-600);
+}
+
+.activity-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.activity-icon.service {
+    background: var(--gradient-sunset);
+}
+
+.activity-icon.fuel {
+    background: var(--gradient-ocean);
+}
+
+.activity-icon.inspection {
+    background: var(--gradient-forest);
+}
+
+.activity-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.activity-main {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.activity-vehicle {
+    font-weight: 700;
+    color: var(--gray-50);
+    font-size: 0.938rem;
+}
+
+.activity-description {
+    color: var(--gray-300);
+    font-size: 0.875rem;
+}
+
+.activity-date {
+    font-size: 0.813rem;
+    color: var(--gray-500);
+}
+
+.activity-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.activity-status {
+    text-transform: capitalize;
+}
+
+.activity-cost {
+    font-weight: 700;
+    color: var(--gray-50);
+    font-size: 1rem;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* ========================================== 
+   Responsive Design
+   ========================================== */
+
+@media (max-width: 1400px) {
+    .charts-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .report-types-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pie-chart-container {
+        flex-direction: column;
+    }
+
+    .vehicle-metrics {
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .reports-page {
+        padding: var(--spacing-md);
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .date-range-selector,
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-performance-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vehicle-metrics {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .activity-meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* ========================================== 
+   Print Styles
+   ========================================== */
+
+@media print {
+
+    .header-actions,
+    .section-header button {
+        display: none;
+    }
+
+    .reports-page {
+        background: white;
+        color: black;
+    }
+
+    .card,
+    .summary-card,
+    .chart-card,
+    .activity-item {
+        break-inside: avoid;
+        border: 1px solid #ddd;
+    }
+}
