@@ -15,6 +15,7 @@ import AddFuelRecord from './pages/fuel/AddFuelRecord';
 import Reports from './pages/reports/Reports';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import UserProfile from './pages/profile/UserProfile';
 import './App.css';
 
 function App() {
@@ -37,27 +38,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          
+
           {/* Vehicle Routes */}
           <Route path="vehicles" element={<VehicleList />} />
           <Route path="vehicles/add" element={<AddVehicle />} />
           <Route path="vehicles/:id" element={<VehicleDetails />} />
-          
+
           {/* Service Routes */}
           <Route path="service" element={<ServiceHistory />} />
           <Route path="service/add" element={<AddService />} />
-          
+
           {/* Driver Routes */}
           <Route path="drivers" element={<DriverList />} />
           <Route path="drivers/add" element={<AddDriver />} />
           <Route path="drivers/:id" element={<DriverProfile />} />
-          
+
           {/* Fuel Routes */}
           <Route path="fuel" element={<FuelAnalysis />} />
           <Route path="fuel/add" element={<AddFuelRecord />} />
-          
+
           {/* Reports */}
           <Route path="reports" element={<Reports />} />
+
+          {/* User Profile */}
+          <Route path="profile" element={<UserProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>

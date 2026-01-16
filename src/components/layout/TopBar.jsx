@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FiBell, FiSearch, FiMenu, FiUser, FiSettings, FiLogOut } from 'react-icons/fi';
 import './TopBar.css';
 
 const TopBar = ({ toggleSidebar }) => {
+    const navigate = useNavigate();
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
     const [searchQuery, setSearchQuery] = React.useState('');
 
@@ -47,7 +49,13 @@ const TopBar = ({ toggleSidebar }) => {
 
                     {showProfileMenu && (
                         <div className="dropdown-menu">
-                            <button className="dropdown-item">
+                            <button
+                                className="dropdown-item"
+                                onClick={() => {
+                                    navigate('/profile');
+                                    setShowProfileMenu(false);
+                                }}
+                            >
                                 <FiUser /> Profile
                             </button>
                             <button className="dropdown-item">
