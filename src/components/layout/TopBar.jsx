@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiBell, FiSearch, FiMenu, FiUser, FiSettings, FiLogOut } from 'react-icons/fi';
+import { FiBell, FiSearch, FiMenu, FiUser, FiSettings, FiLogOut, FiMoon, FiSun } from 'react-icons/fi';
+import { useTheme } from '../../context/ThemeContext';
 import './TopBar.css';
 
 const TopBar = ({ toggleSidebar }) => {
     const navigate = useNavigate();
+    const { theme, toggleTheme } = useTheme();
     const [showProfileMenu, setShowProfileMenu] = React.useState(false);
     const [searchQuery, setSearchQuery] = React.useState('');
 
@@ -28,6 +30,17 @@ const TopBar = ({ toggleSidebar }) => {
             </div>
 
             <div className="topbar-right">
+                <button
+                    className="theme-toggle-btn"
+                    onClick={toggleTheme}
+                    title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                >
+                    <div className="theme-icon-wrapper">
+                        <FiSun className={`theme-icon sun-icon ${theme === 'light' ? 'active' : ''}`} />
+                        <FiMoon className={`theme-icon moon-icon ${theme === 'dark' ? 'active' : ''}`} />
+                    </div>
+                </button>
+
                 <button className="icon-btn" title="Notifications">
                     <FiBell />
                     <span className="notification-badge">3</span>

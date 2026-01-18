@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import VehicleList from './pages/vehicles/VehicleList';
@@ -23,48 +24,52 @@ function App() {
 
   if (!isAuthenticated) {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login setAuth={setIsAuthenticated} />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login setAuth={setIsAuthenticated} />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     );
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Dashboard />} />
 
-          {/* Vehicle Routes */}
-          <Route path="vehicles" element={<VehicleList />} />
-          <Route path="vehicles/add" element={<AddVehicle />} />
-          <Route path="vehicles/:id" element={<VehicleDetails />} />
+            {/* Vehicle Routes */}
+            <Route path="vehicles" element={<VehicleList />} />
+            <Route path="vehicles/add" element={<AddVehicle />} />
+            <Route path="vehicles/:id" element={<VehicleDetails />} />
 
-          {/* Service Routes */}
-          <Route path="service" element={<ServiceHistory />} />
-          <Route path="service/add" element={<AddService />} />
+            {/* Service Routes */}
+            <Route path="service" element={<ServiceHistory />} />
+            <Route path="service/add" element={<AddService />} />
 
-          {/* Driver Routes */}
-          <Route path="drivers" element={<DriverList />} />
-          <Route path="drivers/add" element={<AddDriver />} />
-          <Route path="drivers/:id" element={<DriverProfile />} />
+            {/* Driver Routes */}
+            <Route path="drivers" element={<DriverList />} />
+            <Route path="drivers/add" element={<AddDriver />} />
+            <Route path="drivers/:id" element={<DriverProfile />} />
 
-          {/* Fuel Routes */}
-          <Route path="fuel" element={<FuelAnalysis />} />
-          <Route path="fuel/add" element={<AddFuelRecord />} />
+            {/* Fuel Routes */}
+            <Route path="fuel" element={<FuelAnalysis />} />
+            <Route path="fuel/add" element={<AddFuelRecord />} />
 
-          {/* Reports */}
-          <Route path="reports" element={<Reports />} />
+            {/* Reports */}
+            <Route path="reports" element={<Reports />} />
 
-          {/* User Profile */}
-          <Route path="profile" element={<UserProfile />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            {/* User Profile */}
+            <Route path="profile" element={<UserProfile />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
