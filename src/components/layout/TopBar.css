@@ -101,6 +101,63 @@
     color: var(--primary-400);
 }
 
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--dark-surface-hover);
+}
+
+.theme-icon-wrapper {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.theme-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-size: 1.25rem;
+}
+
+.theme-icon.active {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    opacity: 1;
+}
+
+.sun-icon {
+    color: #f59e0b;
+}
+
+.moon-icon {
+    color: #8b5cf6;
+}
+
+.theme-toggle-btn:hover .sun-icon {
+    color: #fbbf24;
+}
+
+.theme-toggle-btn:hover .moon-icon {
+    color: #a78bfa;
+}
+
 .notification-badge {
     position: absolute;
     top: 6px;
