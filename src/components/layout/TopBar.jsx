@@ -30,16 +30,19 @@ const TopBar = ({ toggleSidebar }) => {
             </div>
 
             <div className="topbar-right">
-                <button
-                    className="theme-toggle-btn"
+                <div
+                    className={`theme-toggle-switch ${theme === 'light' ? 'light' : 'dark'}`}
                     onClick={toggleTheme}
                     title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
                 >
-                    <div className="theme-icon-wrapper">
-                        <FiSun className={`theme-icon sun-icon ${theme === 'light' ? 'active' : ''}`} />
-                        <FiMoon className={`theme-icon moon-icon ${theme === 'dark' ? 'active' : ''}`} />
+                    <div className="toggle-track">
+                        <FiMoon className="track-icon moon" />
+                        <FiSun className="track-icon sun" />
                     </div>
-                </button>
+                    <div className="toggle-thumb">
+                        {theme === 'dark' ? <FiMoon /> : <FiSun />}
+                    </div>
+                </div>
 
                 <button className="icon-btn" title="Notifications">
                     <FiBell />
