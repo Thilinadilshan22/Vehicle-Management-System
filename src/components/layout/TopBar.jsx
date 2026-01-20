@@ -74,7 +74,13 @@ const TopBar = ({ toggleSidebar }) => {
                             >
                                 <FiUser /> Profile
                             </button>
-                            <button className="dropdown-item">
+                            <button
+                                className="dropdown-item"
+                                onClick={() => {
+                                    navigate('/profile');
+                                    setShowProfileMenu(false);
+                                }}
+                            >
                                 <FiSettings /> Settings
                             </button>
                             <div className="dropdown-divider" />
