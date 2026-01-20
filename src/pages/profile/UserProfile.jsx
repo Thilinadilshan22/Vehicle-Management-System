@@ -4,7 +4,8 @@ import {
     FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, FiEdit,
     FiSettings, FiShield, FiBell, FiClock, FiCheckCircle,
     FiTruck, FiUsers, FiTool, FiDroplet, FiLock, FiKey,
-    FiGlobe, FiMoon, FiSun, FiActivity
+    FiGlobe, FiMoon, FiSun, FiActivity, FiDownload, FiLogOut,
+    FiMonitor
 } from 'react-icons/fi';
 import './UserProfile.css';
 
@@ -13,6 +14,10 @@ const UserProfile = () => {
     const [darkMode, setDarkMode] = React.useState(true);
     const [emailNotifications, setEmailNotifications] = React.useState(true);
     const [smsAlerts, setSmsAlerts] = React.useState(false);
+    const [timezone, setTimezone] = React.useState('Asia/Colombo');
+    const [dateFormat, setDateFormat] = React.useState('DD/MM/YYYY');
+    const [autoLogout, setAutoLogout] = React.useState(true);
+    const [compactView, setCompactView] = React.useState(false);
 
     // Mock user data - in real app, fetch from auth context or API
     const user = {
@@ -232,6 +237,7 @@ const UserProfile = () => {
                             </h3>
                         </div>
                         <div className="settings-list">
+                            {/* Email Notifications */}
                             <div className="setting-item">
                                 <div className="setting-info">
                                     <FiBell className="setting-icon" />
@@ -252,6 +258,7 @@ const UserProfile = () => {
                                 </label>
                             </div>
 
+                            {/* SMS Alerts */}
                             <div className="setting-item">
                                 <div className="setting-info">
                                     <FiPhone className="setting-icon" />
@@ -272,6 +279,7 @@ const UserProfile = () => {
                                 </label>
                             </div>
 
+                            {/* Dark Mode */}
                             <div className="setting-item">
                                 <div className="setting-info">
                                     <FiMoon className="setting-icon" />
@@ -292,6 +300,7 @@ const UserProfile = () => {
                                 </label>
                             </div>
 
+                            {/* Language */}
                             <div className="setting-item">
                                 <div className="setting-info">
                                     <FiGlobe className="setting-icon" />
@@ -307,6 +316,110 @@ const UserProfile = () => {
                                     <option value="si">Sinhala</option>
                                     <option value="ta">Tamil</option>
                                 </select>
+                            </div>
+
+                            {/* Timezone */}
+                            <div className="setting-item">
+                                <div className="setting-info">
+                                    <FiClock className="setting-icon" />
+                                    <div>
+                                        <h4 className="setting-title">Timezone</h4>
+                                        <p className="setting-description">
+                                            Set your local timezone for accurate time display
+                                        </p>
+                                    </div>
+                                </div>
+                                <select
+                                    className="setting-select"
+                                    value={timezone}
+                                    onChange={(e) => setTimezone(e.target.value)}
+                                >
+                                    <option value="Asia/Colombo">Asia/Colombo (GMT +5:30)</option>
+                                    <option value="Asia/Dubai">Asia/Dubai (GMT +4:00)</option>
+                                    <option value="Europe/London">Europe/London (GMT +0:00)</option>
+                                    <option value="America/New_York">America/New York (GMT -5:00)</option>
+                                    <option value="Asia/Tokyo">Asia/Tokyo (GMT +9:00)</option>
+                                </select>
+                            </div>
+
+                            {/* Date Format */}
+                            <div className="setting-item">
+                                <div className="setting-info">
+                                    <FiCalendar className="setting-icon" />
+                                    <div>
+                                        <h4 className="setting-title">Date Format</h4>
+                                        <p className="setting-description">
+                                            Choose how dates are displayed
+                                        </p>
+                                    </div>
+                                </div>
+                                <select
+                                    className="setting-select"
+                                    value={dateFormat}
+                                    onChange={(e) => setDateFormat(e.target.value)}
+                                >
+                                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                </select>
+                            </div>
+
+                            {/* Compact View */}
+                            <div className="setting-item">
+                                <div className="setting-info">
+                                    <FiMonitor className="setting-icon" />
+                                    <div>
+                                        <h4 className="setting-title">Compact View</h4>
+                                        <p className="setting-description">
+                                            Use a more condensed layout to show more information
+                                        </p>
+                                    </div>
+                                </div>
+                                <label className="toggle-switch">
+                                    <input
+                                        type="checkbox"
+                                        checked={compactView}
+                                        onChange={(e) => setCompactView(e.target.checked)}
+                                    />
+                                    <span className="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            {/* Auto Logout */}
+                            <div className="setting-item">
+                                <div className="setting-info">
+                                    <FiLogOut className="setting-icon" />
+                                    <div>
+                                        <h4 className="setting-title">Auto Logout</h4>
+                                        <p className="setting-description">
+                                            Automatically log out after 30 minutes of inactivity
+                                        </p>
+                                    </div>
+                                </div>
+                                <label className="toggle-switch">
+                                    <input
+                                        type="checkbox"
+                                        checked={autoLogout}
+                                        onChange={(e) => setAutoLogout(e.target.checked)}
+                                    />
+                                    <span className="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            {/* Data Export */}
+                            <div className="setting-item">
+                                <div className="setting-info">
+                                    <FiDownload className="setting-icon" />
+                                    <div>
+                                        <h4 className="setting-title">Export Data</h4>
+                                        <p className="setting-description">
+                                            Download a copy of your account data and activity
+                                        </p>
+                                    </div>
+                                </div>
+                                <button className="btn btn-secondary btn-sm">
+                                    Export Data
+                                </button>
                             </div>
                         </div>
                     </div>
