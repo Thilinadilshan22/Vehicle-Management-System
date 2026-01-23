@@ -240,6 +240,67 @@ a:hover {
 }
 
 /* ========================================== 
+   Text Size Settings
+   ========================================== */
+
+/* Small Text Size */
+[data-text-size="small"] {
+  font-size: 90%;
+}
+
+[data-text-size="small"] h1 {
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+}
+
+[data-text-size="small"] h2 {
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+}
+
+[data-text-size="small"] h3 {
+  font-size: clamp(1.125rem, 2.75vw, 1.75rem);
+}
+
+/* Medium Text Size (Default) */
+[data-text-size="medium"] {
+  font-size: 100%;
+}
+
+/* Large Text Size */
+[data-text-size="large"] {
+  font-size: 110%;
+}
+
+[data-text-size="large"] h1 {
+  font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+}
+
+[data-text-size="large"] h2 {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+}
+
+[data-text-size="large"] h3 {
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+}
+
+/* Extra Large Text Size */
+[data-text-size="extra-large"] {
+  font-size: 120%;
+}
+
+[data-text-size="extra-large"] h1 {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+[data-text-size="extra-large"] h2 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+[data-text-size="extra-large"] h3 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+
+/* ========================================== 
    Glassmorphism Components
    ========================================== */
 

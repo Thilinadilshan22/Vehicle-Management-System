@@ -1,23 +1,49 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import {
     FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, FiEdit,
     FiSettings, FiShield, FiBell, FiClock, FiCheckCircle,
     FiTruck, FiUsers, FiTool, FiDroplet, FiLock, FiKey,
     FiGlobe, FiMoon, FiSun, FiActivity, FiDownload, FiLogOut,
-    FiMonitor
+    FiMonitor, FiType
 } from 'react-icons/fi';
 import './UserProfile.css';
 
 const UserProfile = () => {
     const navigate = useNavigate();
-    const [darkMode, setDarkMode] = React.useState(true);
-    const [emailNotifications, setEmailNotifications] = React.useState(true);
-    const [smsAlerts, setSmsAlerts] = React.useState(false);
-    const [timezone, setTimezone] = React.useState('Asia/Colombo');
-    const [dateFormat, setDateFormat] = React.useState('DD/MM/YYYY');
-    const [autoLogout, setAutoLogout] = React.useState(true);
-    const [compactView, setCompactView] = React.useState(false);
+    const { theme, toggleTheme, isDark } = useTheme();
+
+    // Load settings from localStorage
+    const [emailNotifications, setEmailNotifications] = React.useState(() => {
+        const saved = localStorage.getItem('v-mas-email-notifications');
+        return saved ? JSON.parse(saved) : true;
+    });
+    const [smsAlerts, setSmsAlerts] = React.useState(() => {
+        const saved = localStorage.getItem('v-mas-sms-alerts');
+        return saved ? JSON.parse(saved) : false;
+    });
+    const [timezone, setTimezone] = React.useState(() => {
+        return localStorage.getItem('v-mas-timezone') || 'Asia/Colombo';
+    });
+    const [dateFormat, setDateFormat] = React.useState(() => {
+        return localStorage.getItem('v-mas-date-format') || 'DD/MM/YYYY';
+    });
+    const [language, setLanguage] = React.useState(() => {
+        return localStorage.getItem('v-mas-language') || 'en';
+    });
+    const [textSize, setTextSize] = React.useState(() => {
+        return localStorage.getItem('v-mas-text-size') || 'medium';
+    });
+    const [autoLogout, setAutoLogout] = React.useState(() => {
+        const saved = localStorage.getItem('v-mas-auto-logout');
+        return saved ? JSON.parse(saved) : true;
+    });
+    const [compactView, setCompactView] = React.useState(() => {
+        const saved = localStorage.getItem('v-mas-compact-view');
+        return saved ? JSON.parse(saved) : false;
+    });
+
     const [isEditing, setIsEditing] = React.useState(false);
     const [showNotification, setShowNotification] = React.useState(false);
     const [notificationMessage, setNotificationMessage] = React.useState('');
@@ -198,6 +224,64 @@ const UserProfile = () => {
             }, 3000);
         }
     };
+
+    // Handle settings changes with localStorage persistence
+    const handleSettingChange = (key, value) => {
+        localStorage.setItem(`v-mas-${key}`, typeof value === 'boolean' ? JSON.stringify(value) : value);
+
+        // Show notification for settings change
+        setNotificationType('success');
+        setNotificationMessage('Setting updated successfully!');
+        setShowNotification(true);
+        setTimeout(() => setShowNotification(false), 2000);
+    };
+
+    const handleEmailNotificationsChange = (value) => {
+        setEmailNotifications(value);
+        handleSettingChange('email-notifications', value);
+    };
+
+    const handleSmsAlertsChange = (value) => {
+        setSmsAlerts(value);
+        handleSettingChange('sms-alerts', value);
+    };
+
+    const handleTimezoneChange = (value) => {
+        setTimezone(value);
+        handleSettingChange('timezone', value);
+    };
+
+    const handleDateFormatChange = (value) => {
+        setDateFormat(value);
+        handleSettingChange('date-format', value);
+    };
+
+    const handleLanguageChange = (value) => {
+        setLanguage(value);
+        handleSettingChange('language', value);
+    };
+
+    const handleTextSizeChange = (value) => {
+        setTextSize(value);
+        handleSettingChange('text-size', value);
+        // Apply text size to document
+        document.documentElement.setAttribute('data-text-size', value);
+    };
+
+    const handleAutoLogoutChange = (value) => {
+        setAutoLogout(value);
+        handleSettingChange('auto-logout', value);
+    };
+
+    const handleCompactViewChange = (value) => {
+        setCompactView(value);
+        handleSettingChange('compact-view', value);
+    };
+
+    // Apply text size on mount
+    React.useEffect(() => {
+        document.documentElement.setAttribute('data-text-size', textSize);
+    }, []);
 
     return (
         <div className="user-profile-page">
@@ -474,7 +558,7 @@ const UserProfile = () => {
                                     <input
                                         type="checkbox"
                                         checked={emailNotifications}
-                                        onChange={(e) => setEmailNotifications(e.target.checked)}
+                                        onChange={(e) => handleEmailNotificationsChange(e.target.checked)}
                                     />
                                     <span className="toggle-slider"></span>
                                 </label>
@@ -495,7 +579,7 @@ const UserProfile = () => {
                                     <input
                                         type="checkbox"
                                         checked={smsAlerts}
-                                        onChange={(e) => setSmsAlerts(e.target.checked)}
+                                        onChange={(e) => handleSmsAlertsChange(e.target.checked)}
                                     />
                                     <span className="toggle-slider"></span>
                                 </label>
@@ -504,19 +588,19 @@ const UserProfile = () => {
                             {/* Dark Mode */}
                             <div className="setting-item">
                                 <div className="setting-info">
-                                    <FiMoon className="setting-icon" />
+                                    {isDark ? <FiMoon className="setting-icon" /> : <FiSun className="setting-icon" />}
                                     <div>
                                         <h4 className="setting-title">Dark Mode</h4>
                                         <p className="setting-description">
-                                            Use dark theme across the application
+                                            {isDark ? 'Switch to light theme' : 'Switch to dark theme'}
                                         </p>
                                     </div>
                                 </div>
                                 <label className="toggle-switch">
                                     <input
                                         type="checkbox"
-                                        checked={darkMode}
-                                        onChange={(e) => setDarkMode(e.target.checked)}
+                                        checked={isDark}
+                                        onChange={toggleTheme}
                                     />
                                     <span className="toggle-slider"></span>
                                 </label>
@@ -533,10 +617,37 @@ const UserProfile = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <select className="setting-select">
+                                <select
+                                    className="setting-select"
+                                    value={language}
+                                    onChange={(e) => handleLanguageChange(e.target.value)}
+                                >
                                     <option value="en">English</option>
                                     <option value="si">Sinhala</option>
                                     <option value="ta">Tamil</option>
+                                </select>
+                            </div>
+
+                            {/* Text Size */}
+                            <div className="setting-item">
+                                <div className="setting-info">
+                                    <FiType className="setting-icon" />
+                                    <div>
+                                        <h4 className="setting-title">Text Size</h4>
+                                        <p className="setting-description">
+                                            Adjust the text size across the application
+                                        </p>
+                                    </div>
+                                </div>
+                                <select
+                                    className="setting-select"
+                                    value={textSize}
+                                    onChange={(e) => handleTextSizeChange(e.target.value)}
+                                >
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="extra-large">Extra Large</option>
                                 </select>
                             </div>
 
@@ -554,7 +665,7 @@ const UserProfile = () => {
                                 <select
                                     className="setting-select"
                                     value={timezone}
-                                    onChange={(e) => setTimezone(e.target.value)}
+                                    onChange={(e) => handleTimezoneChange(e.target.value)}
                                 >
                                     <option value="Asia/Colombo">Asia/Colombo (GMT +5:30)</option>
                                     <option value="Asia/Dubai">Asia/Dubai (GMT +4:00)</option>
@@ -578,7 +689,7 @@ const UserProfile = () => {
                                 <select
                                     className="setting-select"
                                     value={dateFormat}
-                                    onChange={(e) => setDateFormat(e.target.value)}
+                                    onChange={(e) => handleDateFormatChange(e.target.value)}
                                 >
                                     <option value="DD/MM/YYYY">DD/MM/YYYY</option>
                                     <option value="MM/DD/YYYY">MM/DD/YYYY</option>
@@ -601,7 +712,7 @@ const UserProfile = () => {
                                     <input
                                         type="checkbox"
                                         checked={compactView}
-                                        onChange={(e) => setCompactView(e.target.checked)}
+                                        onChange={(e) => handleCompactViewChange(e.target.checked)}
                                     />
                                     <span className="toggle-slider"></span>
                                 </label>
@@ -622,7 +733,7 @@ const UserProfile = () => {
                                     <input
                                         type="checkbox"
                                         checked={autoLogout}
-                                        onChange={(e) => setAutoLogout(e.target.checked)}
+                                        onChange={(e) => handleAutoLogoutChange(e.target.checked)}
                                     />
                                     <span className="toggle-slider"></span>
                                 </label>
