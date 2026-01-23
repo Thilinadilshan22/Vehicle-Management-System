@@ -212,7 +212,7 @@ const TopBar = ({ toggleSidebar }) => {
                             <button
                                 className="dropdown-item"
                                 onClick={() => {
-                                    navigate('/profile');
+                                    navigate('/settings');
                                     setShowProfileMenu(false);
                                 }}
                             >

@@ -17,6 +17,7 @@ import Reports from './pages/reports/Reports';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import UserProfile from './pages/profile/UserProfile';
+import Settings from './pages/settings/Settings';
 import './App.css';
 
 function App() {
@@ -66,6 +67,9 @@ function App() {
 
             {/* User Profile */}
             <Route path="profile" element={<UserProfile />} />
+
+            {/* Settings */}
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>
