@@ -524,6 +524,128 @@
 }
 
 /* ========================================== 
+   Edit Mode Form Inputs
+   ========================================== */
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--dark-bg);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-md);
+    color: var(--gray-200);
+    font-size: 0.938rem;
+    transition: all var(--transition-base);
+    font-family: inherit;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.form-input:disabled {
+    background: rgba(255, 255, 255, 0.02);
+    cursor: not-allowed;
+}
+
+.form-input::placeholder {
+    color: var(--gray-500);
+}
+
+.form-input.input-error {
+    border-color: var(--accent-red, #ef4444);
+}
+
+.error-message {
+    display: block;
+    color: var(--accent-red, #ef4444);
+    font-size: 0.75rem;
+    margin-top: var(--spacing-xs);
+    animation: fadeIn 0.2s ease;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--dark-border);
+}
+
+/* ========================================== 
+   Notification Toast
+   ========================================== */
+
+.notification {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 1rem 1.5rem;
+    background: var(--dark-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    animation: slideInRight 0.3s ease;
+    min-width: 300px;
+}
+
+.notification svg {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.notification span {
+    color: var(--gray-100);
+    font-size: 0.938rem;
+    font-weight: 500;
+}
+
+.notification-success {
+    border-color: var(--accent-green);
+}
+
+.notification-success svg {
+    color: var(--accent-green);
+}
+
+.notification-error {
+    border-color: var(--accent-red, #ef4444);
+}
+
+.notification-error svg {
+    color: var(--accent-red, #ef4444);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========================================== 
    Responsive Design
    ========================================== */
 
@@ -570,5 +692,21 @@
     .profile-header-actions .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .notification {
+        left: 1rem;
+        right: 1rem;
+        top: 1rem;
+        min-width: auto;
     }
 }
