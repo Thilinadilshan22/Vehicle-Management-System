@@ -36,7 +36,7 @@ const Dashboard = () => {
         },
         {
             title: 'Monthly Cost',
-            value: 'LKR 125K',
+            value: 'LKR 122K',
             change: '+12%',
             trend: 'up',
             icon: FiDollarSign,
