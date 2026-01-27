@@ -17,6 +17,7 @@ const Dashboard = () => {
             trend: 'up',
             icon: FiTruck,
             color: 'blue',
+            link: '/vehicles',
         },
         {
             title: 'Active Services',
@@ -25,6 +26,7 @@ const Dashboard = () => {
             trend: 'down',
             icon: FiActivity,
             color: 'green',
+            link: '/service',
         },
         {
             title: 'Pending Alerts',
@@ -33,6 +35,7 @@ const Dashboard = () => {
             trend: 'up',
             icon: FiAlertCircle,
             color: 'orange',
+            link: '/service',
         },
         {
             title: 'Monthly Cost',
@@ -41,6 +44,7 @@ const Dashboard = () => {
             trend: 'up',
             icon: FiDollarSign,
             color: 'purple',
+            link: '/fuel',
         },
     ];
 
@@ -104,7 +108,12 @@ const Dashboard = () => {
                     const TrendIcon = stat.trend === 'up' ? FiTrendingUp : FiTrendingDown;
 
                     return (
-                        <div key={index} className={`stat-card ${stat.color}`}>
+                        <Link
+                            key={index}
+                            to={stat.link}
+                            className={`stat-card ${stat.color}`}
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                             <div className="stat-icon">
                                 <Icon />
                             </div>
@@ -116,7 +125,7 @@ const Dashboard = () => {
                                     <span>{stat.change}</span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     );
                 })}
             </div>
