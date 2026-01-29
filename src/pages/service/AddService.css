@@ -1,28 +1,35 @@
 .add-service-page {
+    padding: 24px;
+    padding-top: 40px;
     animation: fadeIn 0.5s ease;
+    position: relative;
+    min-height: 100vh;
 }
 
-.back-btn {
-    display: inline-flex;
+.add-service-page .back-btn {
+    display: inline-flex !important;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: 12px;
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    margin-bottom: var(--spacing-xl);
-    padding: 1rem 1.5rem;
+    margin-bottom: 32px;
+    padding: 16px 24px;
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     border: 1px solid rgba(99, 102, 241, 0.2);
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: all var(--transition-base);
+    transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
+    width: auto !important;
+    height: auto !important;
 }
 
-.back-btn::before {
+.add-service-page .back-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -33,28 +40,28 @@
     transition: left 0.5s ease;
 }
 
-.back-btn:hover::before {
+.add-service-page .back-btn:hover::before {
     left: 100%;
 }
 
-.back-btn:hover {
+.add-service-page .back-btn:hover {
     background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
-    border-color: var(--primary-400);
+    border-color: #6366f1;
     box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
     transform: translateY(-2px);
 }
 
-.back-btn:active {
+.add-service-page .back-btn:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.back-btn svg {
+.add-service-page .back-btn svg {
     font-size: 1.25rem;
-    transition: transform var(--transition-base);
+    transition: transform 0.3s ease;
 }
 
-.back-btn:hover svg {
+.add-service-page .back-btn:hover svg {
     transform: translateX(-4px);
 }
 
