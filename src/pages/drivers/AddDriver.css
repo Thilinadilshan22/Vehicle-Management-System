@@ -1,21 +1,67 @@
 .add-driver-page {
+    padding: 24px;
+    padding-top: 40px;
     animation: fadeIn 0.5s ease;
+    position: relative;
+    min-height: 100vh;
 }
 
-.back-btn {
-    display: inline-flex;
+.add-driver-page .back-btn {
+    display: inline-flex !important;
     align-items: center;
-    gap: var(--spacing-sm);
-    color: var(--primary-400);
-    font-size: 0.938rem;
-    font-weight: 500;
-    margin-bottom: var(--spacing-xl);
-    transition: all var(--transition-fast);
+    gap: 12px;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 32px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: auto !important;
+    height: auto !important;
 }
 
-.back-btn:hover {
-    color: var(--primary-300);
+.add-driver-page .back-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.add-driver-page .back-btn:hover::before {
+    left: 100%;
+}
+
+.add-driver-page .back-btn:hover {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-color: #6366f1;
+    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
+}
+
+.add-driver-page .back-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.add-driver-page .back-btn svg {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.add-driver-page .back-btn:hover svg {
     transform: translateX(-4px);
 }
 

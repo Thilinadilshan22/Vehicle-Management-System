@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import './AddVehicle.css';
 
 const AddVehicle = () => {
     const navigate = useNavigate();
