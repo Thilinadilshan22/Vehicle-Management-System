@@ -5,17 +5,57 @@
 .back-btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    color: var(--primary-400);
+    gap: var(--spacing-md);
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1rem;
     margin-bottom: var(--spacing-xl);
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     transition: all var(--transition-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.back-btn:hover::before {
+    left: 100%;
 }
 
 .back-btn:hover {
-    color: var(--primary-300);
-    gap: var(--spacing-md);
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-color: var(--primary-400);
+    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn svg {
+    font-size: 1.25rem;
+    transition: transform var(--transition-base);
+}
+
+.back-btn:hover svg {
+    transform: translateX(-4px);
 }
 
 .form-container {
