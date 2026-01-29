@@ -20,7 +20,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         <>
             <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
                 <div className="sidebar-header">
-                    <div className="logo">
+                    <NavLink to="/" className="logo">
                         <div className="logo-icon">
                             <FiTruck />
                         </div>
@@ -30,7 +30,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
                                 <p>Fleet Control</p>
                             </div>
                         )}
-                    </div>
+                    </NavLink>
                 </div>
 
                 <nav className="sidebar-nav">

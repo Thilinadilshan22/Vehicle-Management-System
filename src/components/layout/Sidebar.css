@@ -27,6 +27,13 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+    opacity: 0.85;
 }
 
 .logo-icon {
