@@ -101,6 +101,38 @@ const Dashboard = () => {
                 </div>
             </div>
 
+            {/* Quick Actions Panel */}
+            <div className="quick-actions-panel">
+                <Link to="/vehicles/add" className="quick-action-item">
+                    <FiPlus className="quick-action-icon" />
+                    <div className="quick-action-content">
+                        <span className="quick-action-title">Add Vehicle</span>
+                        <span className="quick-action-subtitle">Register new vehicle</span>
+                    </div>
+                </Link>
+                <Link to="/service/add" className="quick-action-item">
+                    <FiActivity className="quick-action-icon" />
+                    <div className="quick-action-content">
+                        <span className="quick-action-title">Log Service</span>
+                        <span className="quick-action-subtitle">Record maintenance</span>
+                    </div>
+                </Link>
+                <Link to="/fuel/add" className="quick-action-item">
+                    <FiDollarSign className="quick-action-icon" />
+                    <div className="quick-action-content">
+                        <span className="quick-action-title">Add Fuel</span>
+                        <span className="quick-action-subtitle">Track fuel expenses</span>
+                    </div>
+                </Link>
+                <Link to="/reports" className="quick-action-item">
+                    <FiTrendingUp className="quick-action-icon" />
+                    <div className="quick-action-content">
+                        <span className="quick-action-title">View Reports</span>
+                        <span className="quick-action-subtitle">Analytics & insights</span>
+                    </div>
+                </Link>
+            </div>
+
             {/* Stats Grid */}
             <div className="stats-grid">
                 {stats.map((stat, index) => {
