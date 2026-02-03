@@ -94,11 +94,6 @@ const Dashboard = () => {
                     <h1>Dashboard</h1>
                     <p>Welcome back! Here's what's happening with your fleet.</p>
                 </div>
-                <div className="header-actions">
-                    <Link to="/vehicles/add" className="btn btn-primary">
-                        <FiPlus /> Add Vehicle
-                    </Link>
-                </div>
             </div>
 
             {/* Quick Actions Panel */}
