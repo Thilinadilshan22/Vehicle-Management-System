@@ -98,6 +98,13 @@ const Dashboard = () => {
 
             {/* Quick Actions Panel */}
             <div className="quick-actions-panel">
+                <Link to="/vehicles/add" className="quick-action-item">
+                    <FiTruck className="quick-action-icon" />
+                    <div className="quick-action-content">
+                        <span className="quick-action-title">Add Vehicle</span>
+                        <span className="quick-action-subtitle">Register new vehicle</span>
+                    </div>
+                </Link>
                 <Link to="/service/add" className="quick-action-item">
                     <FiActivity className="quick-action-icon" />
                     <div className="quick-action-content">
