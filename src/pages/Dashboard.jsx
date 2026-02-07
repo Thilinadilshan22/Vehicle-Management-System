@@ -245,30 +245,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Quick Actions */}
-                <div className="dashboard-card">
-                    <div className="card-header">
-                        <h3>Quick Actions</h3>
-                    </div>
-                    <div className="quick-actions">
-                        <Link to="/service/add" className="action-btn">
-                            <FiActivity />
-                            <span>Log Service</span>
-                        </Link>
-                        <Link to="/fuel/add" className="action-btn">
-                            <FiDollarSign />
-                            <span>Add Fuel Record</span>
-                        </Link>
-                        <Link to="/drivers/add" className="action-btn">
-                            <FiPlus />
-                            <span>Add Driver</span>
-                        </Link>
-                        <Link to="/reports" className="action-btn">
-                            <FiTrendingUp />
-                            <span>View Reports</span>
-                        </Link>
-                    </div>
-                </div>
+
             </div>
         </div>
     );
