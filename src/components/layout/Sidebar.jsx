@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     FiHome, FiTruck, FiTool, FiUsers, FiDroplet,
-    FiFileText, FiMenu, FiX
+    FiFileText, FiMenu, FiX, FiMapPin
 } from 'react-icons/fi';
 import './Sidebar.css';
 
@@ -13,6 +13,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         { icon: FiTool, label: 'Service', path: '/service' },
         { icon: FiUsers, label: 'Drivers', path: '/drivers' },
         { icon: FiDroplet, label: 'Fuel Analysis', path: '/fuel' },
+        { icon: FiMapPin, label: 'Location', path: '/location' },
         { icon: FiFileText, label: 'Reports', path: '/reports' },
     ];
 

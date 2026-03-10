@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     FiTruck, FiActivity, FiAlertCircle, FiDollarSign,
-    FiTrendingUp, FiTrendingDown, FiPlus, FiArrowRight
+    FiTrendingUp, FiTrendingDown, FiPlus, FiArrowRight, FiMapPin
 } from 'react-icons/fi';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import './Dashboard.css';
@@ -123,7 +123,14 @@ const Dashboard = () => {
                     <FiTrendingUp className="quick-action-icon" />
                     <div className="quick-action-content">
                         <span className="quick-action-title">View Reports</span>
-                        <span className="quick-action-subtitle">Analytics & insights</span>
+                        <span className="quick-action-subtitle">Analytics &amp; insights</span>
+                    </div>
+                </Link>
+                <Link to="/location" className="quick-action-item">
+                    <FiMapPin className="quick-action-icon" />
+                    <div className="quick-action-content">
+                        <span className="quick-action-title">Track Vehicles</span>
+                        <span className="quick-action-subtitle">Live location map</span>
                     </div>
                 </Link>
             </div>

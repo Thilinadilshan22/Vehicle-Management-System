@@ -18,6 +18,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import UserProfile from './pages/profile/UserProfile';
 import Settings from './pages/settings/Settings';
+import LocationTracking from './pages/location/LocationTracking';
 import './App.css';
 
 function App() {
@@ -70,6 +71,9 @@ function App() {
 
             {/* Settings */}
             <Route path="settings" element={<Settings />} />
+
+            {/* Location Tracking */}
+            <Route path="location" element={<LocationTracking />} />
           </Route>
         </Routes>
       </BrowserRouter>
