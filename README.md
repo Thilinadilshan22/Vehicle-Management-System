@@ -35,7 +35,7 @@ A modern, premium frontend application for fleet and vehicle management built wi
 - **Vanilla CSS** - Custom design system
   
 
-## ✅ **Live Demo** - **http://localhost:5173**
+## ✅ **Live Demo** - **[http://localhost:5173](https://thilinadilshan22.github.io/Vehicle-Management-System/)**
 
   
 
