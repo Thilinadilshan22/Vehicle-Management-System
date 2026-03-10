@@ -33,6 +33,11 @@ A modern, premium frontend application for fleet and vehicle management built wi
 - **React Icons** - Icon library
 - **date-fns** - Date utilities
 - **Vanilla CSS** - Custom design system
+  
+
+- ✅ **Live Demo** - **http://localhost:5173**
+
+  
 
 ## 📦 Installation
 
@@ -47,7 +52,6 @@ npm install
 npm run dev
 ```
 
-- ✅ **Live Demo** - **http://localhost:5173**
 
 ## 🏗️ Project Structure
 
