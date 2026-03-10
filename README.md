@@ -192,12 +192,4 @@ The optimized files will be in the `dist/` folder, ready for deployment to:
 - Vercel
 - Any static hosting service
 
-## 📞 Support
 
-For issues and questions, please contact the development team.
-
----
-
-**Status**: ✅ Development Complete - Ready for Backend Integration  
-**Version**: 1.0.0  
-**Last Updated**: January 2026
