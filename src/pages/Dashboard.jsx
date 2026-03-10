@@ -5,7 +5,17 @@ import {
     FiTrendingUp, FiTrendingDown, FiPlus, FiArrowRight, FiMapPin
 } from 'react-icons/fi';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 import './Dashboard.css';
+
+// Fix default marker icons (Leaflet + Vite issue)
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+});
 
 const Dashboard = () => {
     // Mock data
@@ -36,6 +46,15 @@ const Dashboard = () => {
             icon: FiAlertCircle,
             color: 'orange',
             link: '/service',
+        },
+        {
+            title: 'Vehicles On Route',
+            value: '18',
+            change: '+4',
+            trend: 'up',
+            icon: FiMapPin,
+            color: 'cyan',
+            link: '/location',
         },
         {
             title: 'Monthly Cost',
@@ -249,6 +268,33 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+
+                {/* Mini Map Preview */}
+                <div className="dashboard-card">
+                    <div className="card-header">
+                        <h3>Live Fleet Map</h3>
+                        <Link to="/location" className="view-all">
+                            Open Map <FiArrowRight />
+                        </Link>
+                    </div>
+                    <div className="chart-container" style={{ height: '300px', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--dark-border)' }}>
+                        <MapContainer
+                            center={[6.8728, 79.8878]}
+                            zoom={11}
+                            style={{ height: '100%', width: '100%', zIndex: 1 }}
+                            zoomControl={false}
+                        >
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <Marker position={[6.9147, 79.8547]}><Popup>Toyota Camry (Active)</Popup></Marker>
+                            <Marker position={[6.8728, 79.8878]}><Popup>Honda Civic (Active)</Popup></Marker>
+                            <Marker position={[6.8519, 79.8678]}><Popup>Nissan Navara (Idle)</Popup></Marker>
+                            <Marker position={[6.8482, 79.9278]}><Popup>Toyota HiAce (Active)</Popup></Marker>
+                        </MapContainer>
                     </div>
                 </div>
 
