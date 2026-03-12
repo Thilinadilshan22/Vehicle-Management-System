@@ -5,6 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>v-mas-frontend</title>
+    <script>
+      window.addEventListener('error', function(event) {
+        if (event.error) {
+           document.body.innerHTML += '<div style="background:red;color:white;padding:20px;position:fixed;top:0;left:0;z-index:9999;font-size:16px;"><b>Runtime Error:</b><br/>' + event.error.stack.replace(/\n/g, '<br/>') + '</div>';
+        } else {
+           document.body.innerHTML += '<div style="background:red;color:white;padding:20px;position:fixed;top:0;left:0;z-index:9999;font-size:16px;"><b>Runtime Error:</b><br/>' + event.message + '</div>';
+        }
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        document.body.innerHTML += '<div style="background:red;color:white;padding:20px;position:fixed;top:0;left:0;z-index:9999;font-size:16px;"><b>Promise Error:</b><br/>' + (event.reason.stack ? event.reason.stack.replace(/\n/g, '<br/>') : event.reason) + '</div>';
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
