@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react' // or your specific plugin
 
-// https://vite.dev/config/
 export default defineConfig({
+  base: '/Vehicle-Management-System/',
   plugins: [react()],
   base: '/Vehicle-Management-System/'
 })

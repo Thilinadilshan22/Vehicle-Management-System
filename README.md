@@ -33,6 +33,11 @@ A modern, premium frontend application for fleet and vehicle management built wi
 - **React Icons** - Icon library
 - **date-fns** - Date utilities
 - **Vanilla CSS** - Custom design system
+  
+
+## ✅ **Live Demo** - **[[http://localhost:5173](https://thilinadilshan22.github.io/Vehicle-Management-System/)](https://thilinadilshan22.github.io/Vehicle-Management-System/)**
+
+  
 
 ## 📦 Installation
 
@@ -47,7 +52,6 @@ npm install
 npm run dev
 ```
 
-The application will be available at **http://localhost:5173**
 
 ## 🏗️ Project Structure
 
